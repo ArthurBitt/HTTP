@@ -1,0 +1,63 @@
+o HTTP(hypertext transfer protocol ) é um protocolo de comunicação entre um servidor e um navegador. Para esse modelo de comunicação é dado o nome de Client-Server. Esse modelo tenta centralizar o trabalho no servidor, diferente de outros protocolos como P2P, peer to peer, utilizado pelo Utorrent, com finalidade de distribuir o trabalho, de modo que o cliente também participe ativamente. Importante salientar que cada caso pede uma aplicação.
+
+O cliente é quem utiliza o navegador, ou seja, quem solicita um endereço ao servidor.
+
+o Server, é que fornece o serviço, no caso um site digitado no navegador.
+
+O protocolo HTTP estabelece um canal de comunicação entre o cliente e o servidor. Isto é, ele viabiliza a troca de informação entre os dois lados.
+
+Arquitetura  :
+
+Cliente  <--- HTTP ---> Servidor Java  <--- SQL ---> Banco de dados
+        
+Requisições no HTTP/HTTPS.
+
+Quando prenchemos um formulário, ou efetuamos login em uma página, estamos preenchendo dados que são trafegados na rede como texto puro. Isto é, ao digitar um usuário e senha, a network trafega esses dados da maneira como você digitou. O caminho do tráfego nem sempre é direto ente um navegador com servidor, muitas vezes existem intermediários como um roteador, modem, provedor... Fazendo com que o trafego desse informação fique acessível a esses intermediários, logo desprotegida.
+
+O protocolo HTTPS é uma versão do HTTP que adiciona uma camada de proteção a informação trafegada, a camada SSL/TLS (SECURITY SOCKETS LAYER ou TRANSFER SECURITY LAYER). Essa adição de camada viabiliza um trafego mais seguro, fazendo com que a informação deixe de trafegar em texto puro e receba uma camada de criptografia.
+
+aplicações que utilizam o HTTPS possuem um identidade, ou certificado digital. Esse certifcado tem uma chave pública para criptografar os dados inseridos na aplicação. Essa chave criptografa os dados do cliente fazendo com que todo o tráfego esteja protegido, dessa maneira o intermediários não tem acesso ao texto puro digitado. Por outro lado, o servidor possui uma chave privada, que recebe a informação criptografada do cliente e descriptografa os dados.
+
+existem dois tipos de criptografia, assimétrica utilizando chaves diferentes, processo mais lento e é utilizada pelo cliente e servidor. E exite a simétrica, mesma chave dos dois lados, e o processo é mais rápido, utilizada somente na hora. Quando o cliente preenche os dados ele gera um par simétrico ao servidor, que é encaminhado com criptografia assimétrica e então alterado para simétrico quando chega no servidor.
+
+Endereço:
+
+são URL (endereços da web), uma URL começa com o protoclo(http:// ou https://), seguido pelo seu domínio (site.com.br), que pode ou não ter uma caminho especificado para um recurso(recursos/recurso do site) que algo concreto que queremos acessar.
+
+domínio é o nome da aplicação/endereço
+
+raíz é a parte final do endereço, .com; .br; .org; .network
+
+o subdomínio é ainda uma especificação como .gov; .org; .edu
+
+
+IP - um endereço numérico do servidor que hospeda o domínio.
+
+DNS - É um serviço que viabiliza que o as aplicações seja buscadas no browser por seus nomes ao invés de utilizarmos seus endereçõs de IP. O navegador quando recebe o nome do domínio na URL converça com o servidor DNS que verifica qual é o indereço IP da URL passada, quando encontrado o IP, esse é devolvido ao browser que acessa o servidor. O servidor processa a requisição e devolve o HTML, CSS e JS da página URL 
+
+mais fácil digitar google.com que 172.217.29.46
+
+Portas : 
+São os locais onde o acesso está aberto. Por exemplo no HTTP a porta padrão é 80 e no HTTPS a porta padrão é 443. Não é necessário digita-las na URL, pois são padrão. Mas caso o domínio digitado receba :80 ou ainda possua certificado digital e receba :443, A resposta da requisição será a mesma do que não digitar.
+
+Modelo de requisição e respostas:
+
+O HTTP segue um modelo de requisição - resposta, uma requisição precisa de todas as informações para que uma resposta seja gerada
+
+Sessão (guardar dados entre requisições) - o HTTP não guarda estado, cada requisição é única, o conceito atribuído é de stateless, para que um usuário mantenha-se ativo em um site depois de logado, o servidor gera uma sequência alfanumérica como resposta, que é atribuido ao usuário logado, fazendo que o usuário permaneça logado mesmo realizando novas requisições dentro do site. Por exemplo um site de um curso, o usuário loga, o servidor gera essa sequência, se o usuário quiser vizualizar o status de um curso e é redirecionado para a página onde esta o curso, ele permanecera logado com suas informações.
+
+Uma sessão só é implementada quando um cookie é guardado no navegador
+
+Um cookie é um pequeno arquivo de texto, normalmente criado pela aplicação web, para guardar algumas informações sobre usuário no navegador. Quais são essas informações depende um pouco da aplicação. Pode ser que fique gravado alguma preferência do usuário. Ou algumas informações sobre as compras na loja virtual ou, como vimos no vídeo, a identificação do usuário. Isso depende da utilidade para a aplicação web.
+
+
+Depurando a requisição:
+
+É analisar o que é retornado, método utilizado, status code... é possível analisar em network (ferramentas do desenvolvedor do browser)
+
+método get - utilizado para fazer uma requisição
+
+status code - 2xx sucesfull responses
+              3xx redirection responses
+              4xx client error responses
+              5xx server error responses
